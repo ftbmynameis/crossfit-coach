@@ -1,0 +1,28 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.landing-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 16px;
+  min-height: calc(100vh - 64px);
+  box-sizing: border-box;
+}
+
+.landing-card {
+  width: 100%;
+  max-width: 480px;
+
+  mat-card-title {
+    font-size: 1.5rem;
+  }
+
+  p {
+    margin-top: 12px;
+    line-height: 1.6;
+  }
+}
