@@ -61,7 +61,7 @@
 > Direct pushes to `main` are allowed during this phase only.
 > PRs and branch protection are enabled AFTER this phase is verified working (see TASK-001-USER).
 
-### TASK-001 — Repository & project scaffolding 🔲
+### TASK-001 — Repository & project scaffolding ✅
 **Goal:** Monorepo with both projects initialised and building.
 - Create monorepo structure with `/client`, `/server`, `/exercise-seed-generation` directories
 - Scaffold ASP.NET Core Web API project in `/server`
