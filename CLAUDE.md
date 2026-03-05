@@ -104,7 +104,7 @@ CrossFit Coach — a personal CrossFit workout tracker and weight suggestion app
 - As the final change in the PR, mark the task as ✅ in TASKS.md — no other status updates to TASKS.md
 
 ## Local execution handoff
-- `dotnet`, `dotnet ef`, and any other CLI tools not available in this environment cannot be run here
-- If a task requires such a tool (e.g. `dotnet ef migrations add`, `dotnet build` for local verification), **stop immediately**, tell the user exactly what command to run on their local machine, and wait for them to confirm before continuing
-- Do not partially complete a task and push a half-done PR — either the task is fully done or execution is explicitly handed off to the user
+- `dotnet`, `dotnet ef`, and other CLI tools are not available in the Claude web environment
+- If a task requires such a tool, **stop immediately** and tell the user — they will switch to Claude Code on their local machine where those tools are installed and available
+- Do not partially complete a task and push a half-done PR — either the task is fully done or execution is explicitly handed off to the local machine session
 - Only deviate from this if the user explicitly says to proceed anyway
