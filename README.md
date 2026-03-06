@@ -34,8 +34,12 @@ Requires [.NET 9 SDK](https://dotnet.microsoft.com/download).
 cd server
 dotnet restore
 dotnet run --project src/CrossfitCoach.Api
-# Swagger UI: https://localhost:5001/swagger
+# Swagger UI (HTTP):  http://localhost:5000/swagger
+# Swagger UI (HTTPS): https://localhost:5001/swagger  (requires trusted dev cert)
 ```
+
+> If HTTPS fails in the browser, run `dotnet dev-certs https --trust` once, then retry.
+> Or use the HTTP URL — both work locally.
 
 Run tests:
 
