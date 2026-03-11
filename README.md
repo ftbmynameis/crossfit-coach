@@ -68,10 +68,11 @@ The `render.yaml` at the repo root configures the Render web service automatical
 **Manual dashboard setup (alternative):**
 | Field | Value |
 |---|---|
-| Build command | `dotnet publish server/src/CrossfitCoach.Api/CrossfitCoach.Api.csproj -c Release -o publish` |
-| Start command | `./publish/CrossfitCoach.Api` |
-| Environment | Set `ASPNETCORE_ENVIRONMENT=Development` |
-| Port binding | Set `ASPNETCORE_URLS=http://+:$PORT` |
+| Runtime | Docker |
+| Dockerfile path | `./Dockerfile` |
+| Docker context | repo root |
+| `ASPNETCORE_ENVIRONMENT` | `Development` |
+| `ASPNETCORE_URLS` | `http://+:$PORT` |
 
 Once deployed, verify:
 - `GET https://{render-url}/api/health` → `200 OK`

@@ -3,8 +3,8 @@ services:
     name: crossfit-coach-api
     region: oregon
     plan: free
-    buildCommand: dotnet publish server/src/CrossfitCoach.Api/CrossfitCoach.Api.csproj -c Release -o publish
-    startCommand: ./publish/CrossfitCoach.Api
+    env: docker
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Development
