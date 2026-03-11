@@ -1,0 +1,45 @@
+# ── .NET / ASP.NET Core ──────────────────────────────────────────────────────
+bin/
+obj/
+*.user
+*.suo
+.vs/
+*.DotSettings.user
+TestResults/
+*.nupkg
+*.snupkg
+
+# ── Angular / Node ───────────────────────────────────────────────────────────
+node_modules/
+dist/
+.angular/
+*.js.map
+
+# ── Environment & secrets ─────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.env
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# ── Exercise seed toolchain inputs (PDFs are user-supplied, never committed) ──
+exercise-seed-generation/pdfs/
+
+# ── Exercise seed toolchain outputs (large generated files) ──────────────────
+exercise-seed-generation/extract/raw-workouts.json
+exercise-seed-generation/review/reviewed-workouts.json
+exercise-seed-generation/generate/exercises.json
+
+# ── OS / Editor ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/

@@ -98,7 +98,7 @@ CrossFit Coach — a personal CrossFit workout tracker and weight suggestion app
 ## Workflow
 - **At the start of every session:** read `SPEC.md` in full before doing anything. It is the authoritative reference for what the app does, how the data model works, and why decisions were made. Never assume — check SPEC.md first.
 - Each task from TASKS.md should be completed on a feature branch
-- Branch naming: `feature/task-{id}-short-description`
+- Branch naming: `feature/task-{id}-short-description` — the task number in the branch name is sufficient to track status
 - Open a PR against `main` when the task is complete — do not merge it
 - PR description must summarize what was done and how to test it
-- Update TASKS.md to mark the task as 🔄 when starting and ✅ when PR is opened
+- As the final change in the PR, mark the task as ✅ in TASKS.md — no other status updates to TASKS.md
