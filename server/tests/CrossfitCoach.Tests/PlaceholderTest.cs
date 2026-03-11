@@ -1,3 +1,5 @@
+using Xunit;
+
 namespace CrossfitCoach.Tests;
 
 public class PlaceholderTest

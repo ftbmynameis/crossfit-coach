@@ -83,7 +83,7 @@
 
 **Depends on:** TASK-001
 
-### TASK-003 — GitHub Actions CI pipeline 🔲
+### TASK-003 — GitHub Actions CI pipeline ✅
 **Goal:** Automated build and test on every push, with manual trigger support.
 - Create `.github/workflows/ci.yml`
 - On every push and PR: build backend (`dotnet build` + `dotnet test`) and frontend (`npm ci` + `ng build`)
