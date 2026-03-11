@@ -59,17 +59,41 @@ ng serve
 # App: http://localhost:4200
 ```
 
+## Deployment
+
+### Backend — Render
+
+The `render.yaml` at the repo root configures the Render web service automatically when you connect the repo via the Render Blueprint flow.
+
+**Manual dashboard setup (alternative):**
+| Field | Value |
+|---|---|
+| Build command | `dotnet publish server/src/CrossfitCoach.Api/CrossfitCoach.Api.csproj -c Release -o publish` |
+| Start command | `./publish/CrossfitCoach.Api` |
+| Environment | Set `ASPNETCORE_ENVIRONMENT=Development` |
+| Port binding | Set `ASPNETCORE_URLS=http://+:$PORT` |
+
+Once deployed, verify:
+- `GET https://{render-url}/api/health` → `200 OK`
+- `https://{render-url}/swagger` → Swagger UI (Development only)
+
+### Frontend — Vercel
+
+_(Configured in TASK-005)_
+
 ## Environment Variables
 
-Copy `.env.example` (created in a later task) and fill in values. Never commit secrets.
+Copy `.env.example` and fill in your values. Never commit secrets.
 
 | Variable | Description |
 |---|---|
 | `DATABASE_URL` | Neon PostgreSQL connection string |
 | `GOOGLE_CLIENT_ID` | Google OAuth2 client ID |
 | `GOOGLE_CLIENT_SECRET` | Google OAuth2 client secret |
-| `JWT_SECRET` | Secret key for signing JWTs |
+| `JWT_SECRET` | Secret key for signing JWTs — generate with `openssl rand -base64 64` |
 | `ALLOWED_USER_EMAIL` | Email that receives all permissions on first login |
+| `ASPNETCORE_ENVIRONMENT` | Set to `Development` to enable Swagger and dev features |
+| `ASPNETCORE_URLS` | Binding address — use `http://+:$PORT` on Render |
 
 ## Exercise Seed Toolchain
 

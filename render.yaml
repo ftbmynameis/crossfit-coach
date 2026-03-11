@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: crossfit-coach-api
+    region: oregon
+    plan: free
+    buildCommand: dotnet publish server/src/CrossfitCoach.Api/CrossfitCoach.Api.csproj -c Release -o publish
+    startCommand: ./publish/CrossfitCoach.Api
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Development
+      - key: ASPNETCORE_URLS
+        value: http://+:$PORT
