@@ -92,7 +92,7 @@
 
 **Depends on:** TASK-002
 
-### TASK-004 — Render backend deployment 🔲
+### TASK-004 — Render backend deployment ✅
 **Goal:** Backend auto-deploys to Render on push to `main` and is publicly accessible.
 - Configure Render web service pointing at `/server` in the GitHub repo
 - Add `render.yaml` or document build/start commands clearly in `README.md`
