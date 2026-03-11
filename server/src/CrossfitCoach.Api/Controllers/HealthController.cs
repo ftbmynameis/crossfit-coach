@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace CrossfitCoach.Api.Controllers;
 
+/// <summary>
+/// Provides a simple health check endpoint.
+/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class HealthController : ControllerBase
