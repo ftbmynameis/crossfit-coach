@@ -74,7 +74,7 @@
 > 🧑 **User action (before task):** Create the GitHub repository and provide the repo URL
 > 🧑 **User action (after task):** Run both projects locally and confirm they build and run before continuing
 
-### TASK-002 — Landing page (unauthenticated) 🔲
+### TASK-002 — Landing page (unauthenticated) ✅
 **Goal:** A simple public landing page — placeholder for the future login page.
 - Angular: basic landing page component at root route showing app name and a brief description
 - No auth required — publicly accessible

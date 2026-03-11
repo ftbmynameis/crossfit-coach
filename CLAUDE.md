@@ -102,3 +102,9 @@ CrossFit Coach — a personal CrossFit workout tracker and weight suggestion app
 - Open a PR against `main` when the task is complete — do not merge it
 - PR description must summarize what was done and how to test it
 - As the final change in the PR, mark the task as ✅ in TASKS.md — no other status updates to TASKS.md
+
+## Local execution handoff
+- `dotnet`, `dotnet ef`, and other CLI tools are not available in the Claude web environment
+- If a task requires such a tool, **stop immediately** and tell the user — they will switch to Claude Code on their local machine where those tools are installed and available
+- Do not partially complete a task and push a half-done PR — either the task is fully done or execution is explicitly handed off to the local machine session
+- Only deviate from this if the user explicitly says to proceed anyway
