@@ -25,7 +25,7 @@ export class LandingComponent implements OnInit {
       .get<HealthResponse>(`${environment.apiBaseUrl}/api/health`)
       .subscribe({
         next: (res) => this.apiStatus.set(`${res.appName} v${res.version} — connected`),
-        error: () => this.apiStatus.set('API unreachable'),
+        error: () => this.apiStatus.set(`API unreachable (${environment.apiBaseUrl || 'no URL set'})`),
       });
   }
 }
