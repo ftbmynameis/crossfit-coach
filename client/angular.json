@@ -40,6 +40,15 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "define": {
+                "__API_BASE_URL__": "process.env['API_BASE_URL'] || ''"
+              },
               "budgets": [
                 {
                   "type": "initial",
