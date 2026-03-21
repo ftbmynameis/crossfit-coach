@@ -94,6 +94,7 @@ CrossFit Coach — a personal CrossFit workout tracker and weight suggestion app
 - Do not store secrets or API keys in code or committed files
 - Do not skip DTO validation
 - Do not create or modify GitHub branch protection rules
+- Do not push commits to a branch that has already been merged — always `git fetch origin` first, check if the branch is behind or already in `main`, and create a new branch instead
 
 ## Workflow
 - **At the start of every session:** read `SPEC.md` in full before doing anything. It is the authoritative reference for what the app does, how the data model works, and why decisions were made. Never assume — check SPEC.md first.
