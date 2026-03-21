@@ -108,7 +108,7 @@
 
 **Depends on:** TASK-003
 
-### TASK-005 — Vercel frontend deployment 🔲
+### TASK-005 — Vercel frontend deployment ✅
 **Goal:** Angular app auto-deploys to Vercel on push to `main` and is publicly accessible.
 - Configure Vercel project pointing at `/client`
 - Set `API_BASE_URL` environment variable on Vercel pointing to Render URL
