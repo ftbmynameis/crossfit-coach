@@ -1,3 +1,6 @@
+using CrossfitCoach.Api.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
@@ -23,7 +26,20 @@ builder.Services.AddCors(options =>
               .AllowAnyMethod());
 });
 
+var connectionString = builder.Configuration["DATABASE_URL"]
+    ?? throw new InvalidOperationException("DATABASE_URL environment variable is not set.");
+
+builder.Services.AddDbContext<CrossfitCoachDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
 var app = builder.Build();
+
+// Apply pending migrations automatically on startup.
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<CrossfitCoachDbContext>();
+    await db.Database.MigrateAsync();
+}
 
 if (app.Environment.IsDevelopment())
 {
