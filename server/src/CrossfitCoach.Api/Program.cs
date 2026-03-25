@@ -1,5 +1,6 @@
 using CrossfitCoach.Api.Data;
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,8 +30,9 @@ builder.Services.AddCors(options =>
 var connectionString = builder.Configuration["DATABASE_URL"]
     ?? throw new InvalidOperationException("DATABASE_URL environment variable is not set.");
 
+var dataSource = new NpgsqlDataSourceBuilder(connectionString).Build();
 builder.Services.AddDbContext<CrossfitCoachDbContext>(options =>
-    options.UseNpgsql(connectionString));
+    options.UseNpgsql(dataSource));
 
 var app = builder.Build();
 
