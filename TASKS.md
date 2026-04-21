@@ -133,39 +133,7 @@
 
 ---
 
-## Phase 1 Completion Gate
-
-### TASK-001-USER — Enable PR-based workflow 🔲 🧑
-> **Pure user task — Claude Code does not do this.**
-> Complete only after all Phase 1 tasks are verified working end-to-end.
-
-**Checklist:**
-- [ ] Both projects build and run locally ✓
-- [ ] CI pipeline passing and manual trigger works ✓
-- [ ] Landing page live on Vercel ✓
-- [ ] Backend health endpoint live on Render ✓
-- [ ] Swagger UI accessible ✓
-- [ ] DB connection healthy (`/api/health/db`) ✓
-- [ ] On GitHub: **Settings → Branches → Add branch protection rule** for `main`:
-  - ✅ Require a pull request before merging
-  - ✅ Require 1 approval
-  - ✅ Do not allow bypassing the above settings
-
-> From this point forward: all changes via feature branches + PRs only. Claude Code must never push directly to `main`.
-
-### TASK-007 — Swagger link on landing page (dev only) 🔲
-**Goal:** First PR-based task — minimal change to verify the full PR → merge → deploy pipeline works.
-- Add a small unobtrusive link in the top corner of the landing page
-- Only visible when `environment === 'development'`
-- Clicking it opens the backend Swagger UI in a new tab (`API_BASE_URL + /swagger`)
-- This task must go through a feature branch and PR — do not push directly to `main`
-
-**Depends on:** TASK-001-USER
-
----
-
 ## Phase 2: Authentication & Permissions
-> All tasks from here use feature branches and PRs.
 
 ### TASK-008 — Backend: Google OAuth2 + JWT + permissions 🔲
 **Goal:** Users authenticate via Google. First login bootstraps superadmin.
