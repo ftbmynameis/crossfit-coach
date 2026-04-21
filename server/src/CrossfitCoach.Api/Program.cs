@@ -2,6 +2,9 @@ using CrossfitCoach.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
+if (File.Exists(".env"))
+    DotNetEnv.Env.Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
