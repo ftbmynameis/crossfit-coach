@@ -1,0 +1,35 @@
+.exercise-list-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: 16px;
+  }
+}
+
+.filter-field {
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 16px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 4px;
+  border: 1px solid var(--mat-sys-outline-variant);
+
+  table {
+    width: 100%;
+  }
+}
+
+.no-data {
+  text-align: center;
+  padding: 24px;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.error {
+  color: var(--mat-sys-error);
+}

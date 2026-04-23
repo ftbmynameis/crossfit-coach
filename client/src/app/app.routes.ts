@@ -3,5 +3,12 @@ import { LandingComponent } from './landing/landing.component';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
+  {
+    path: 'exercises',
+    loadComponent: () =>
+      import('./exercises/exercise-list/exercise-list.component').then(
+        (m) => m.ExerciseListComponent
+      ),
+  },
   { path: '**', redirectTo: '' },
 ];
