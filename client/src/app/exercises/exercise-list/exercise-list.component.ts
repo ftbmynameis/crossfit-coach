@@ -5,7 +5,11 @@ import {
   GridReadyEvent,
   GridApi,
   themeQuartz,
+  ModuleRegistry,
+  AllCommunityModule,
 } from 'ag-grid-community';
+
+ModuleRegistry.registerModules([AllCommunityModule]);
 import { ExerciseService } from '../exercise.service';
 import { Exercise } from '../exercise.model';
 
