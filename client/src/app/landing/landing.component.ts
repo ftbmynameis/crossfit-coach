@@ -1,6 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { environment } from '../../environments/environment';
 
@@ -11,7 +10,7 @@ interface HealthResponse {
 
 @Component({
   selector: 'app-landing',
-  imports: [MatToolbarModule, MatCardModule],
+  imports: [MatCardModule],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
 })
