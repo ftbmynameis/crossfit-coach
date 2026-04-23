@@ -53,7 +53,7 @@ export class ExerciseListComponent implements OnInit {
       field: 'isCrossFit',
       headerName: 'CrossFit',
       width: 110,
-      filter: 'agSetColumnFilter',
+      filter: false,
       cellRenderer: (p: { value: boolean }) =>
         p.value ? '✓' : '',
     },
