@@ -1,8 +1,10 @@
 using System.Text.Json;
+using CrossfitCoach.Api.Data;
+using CrossfitCoach.Api.Entities;
 using CrossfitCoach.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CrossfitCoach.Api.Data;
+namespace CrossfitCoach.Api.Services;
 
 /// <summary>
 /// Syncs the bundled exercises.json (from free-exercise-db) into the Exercises table on startup.
@@ -15,6 +17,11 @@ public static class ExerciseSeedService
         PropertyNameCaseInsensitive = true
     };
 
+    /// <summary>
+    /// Seeds the Exercises table from the bundled exercises.json if it is currently empty.
+    /// </summary>
+    /// <param name="db">The database context to seed into.</param>
+    /// <param name="logger">Logger for progress and warning output.</param>
     public static async Task SeedAsync(CrossfitCoachDbContext db, ILogger logger)
     {
         if (await db.Exercises.AnyAsync())
@@ -31,25 +38,26 @@ public static class ExerciseSeedService
         }
 
         await using var stream = File.OpenRead(jsonPath);
-        var dtos = await JsonSerializer.DeserializeAsync<FreeExerciseDbDto[]>(stream, JsonOptions);
+        var models = await JsonSerializer.DeserializeAsync<ExerciseModel[]>(stream, JsonOptions);
 
-        if (dtos is null || dtos.Length == 0)
+        if (models is null || models.Length == 0)
         {
             logger.LogWarning("exercises.json is empty or could not be parsed — skipping seed.");
             return;
         }
 
-        var exercises = dtos.Select(dto => new Exercise
+        var exercises = models.Select(m => new ExerciseEntity
         {
-            ExternalId = dto.Id,
-            Name = dto.Name,
-            Force = dto.Force,
-            Level = dto.Level,
-            Mechanic = dto.Mechanic,
-            Equipment = dto.Equipment,
-            PrimaryMuscles = dto.PrimaryMuscles,
-            SecondaryMuscles = dto.SecondaryMuscles,
-            Category = dto.Category,
+            Id = Guid.NewGuid(),
+            ExternalId = m.Id,
+            Name = m.Name,
+            Force = m.Force,
+            Level = m.Level,
+            Mechanic = m.Mechanic,
+            Equipment = m.Equipment,
+            PrimaryMuscles = m.PrimaryMuscles,
+            SecondaryMuscles = m.SecondaryMuscles,
+            Category = m.Category,
             IsCrossFit = false
         }).ToList();
 

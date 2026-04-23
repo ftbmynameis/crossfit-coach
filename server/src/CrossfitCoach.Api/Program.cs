@@ -1,4 +1,5 @@
 using CrossfitCoach.Api.Data;
+using CrossfitCoach.Api.Services;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 

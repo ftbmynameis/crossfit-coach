@@ -1,14 +1,14 @@
-namespace CrossfitCoach.Api.Models;
+namespace CrossfitCoach.Api.Entities;
 
 /// <summary>
-/// An exercise from the exercise library.
+/// Database entity representing an exercise from the exercise library.
 /// The full free-exercise-db dataset is synced on startup; the CrossFit-relevant
 /// subset is flagged via <see cref="IsCrossFit"/>.
 /// </summary>
-public class Exercise
+public class ExerciseEntity
 {
     /// <summary>Database primary key.</summary>
-    public int Id { get; set; }
+    public Guid Id { get; set; }
 
     /// <summary>Stable identifier from free-exercise-db (e.g. "Barbell_Deadlift").</summary>
     public string ExternalId { get; set; } = string.Empty;
