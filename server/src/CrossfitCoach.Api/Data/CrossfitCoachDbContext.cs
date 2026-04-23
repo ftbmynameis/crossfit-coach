@@ -1,3 +1,4 @@
+using CrossfitCoach.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CrossfitCoach.Api.Data;
@@ -14,4 +15,7 @@ public class CrossfitCoachDbContext : DbContext
         : base(options)
     {
     }
+
+    /// <summary>Exercise library — full free-exercise-db dataset plus CrossFit flag.</summary>
+    public DbSet<ExerciseEntity> Exercises => Set<ExerciseEntity>();
 }

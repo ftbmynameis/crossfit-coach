@@ -1,4 +1,5 @@
 using CrossfitCoach.Api.Data;
+using CrossfitCoach.Api.Services;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -39,11 +40,14 @@ builder.Services.AddDbContext<CrossfitCoachDbContext>(options =>
 
 var app = builder.Build();
 
-// Apply pending migrations automatically on startup.
+// Apply pending migrations and seed exercises on startup.
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<CrossfitCoachDbContext>();
     await db.Database.MigrateAsync();
+
+    var seedLogger = scope.ServiceProvider.GetRequiredService<ILogger<CrossfitCoachDbContext>>();
+    await ExerciseSeedService.SeedAsync(db, seedLogger);
 }
 
 if (app.Environment.IsDevelopment())
