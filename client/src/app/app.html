@@ -1,1 +1,9 @@
+<mat-toolbar class="navbar">
+  <span class="navbar-brand" routerLink="/">CrossFit Coach</span>
+  <nav class="navbar-links">
+    <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a mat-button routerLink="/exercises" routerLinkActive="active-link">Exercises</a>
+  </nav>
+</mat-toolbar>
+
 <router-outlet />
