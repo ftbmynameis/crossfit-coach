@@ -13,6 +13,9 @@ public class HealthController : ControllerBase
 {
     private readonly CrossfitCoachDbContext _db;
 
+    /// <summary>
+    /// Initialises a new instance of <see cref="HealthController"/>.
+    /// </summary>
     public HealthController(CrossfitCoachDbContext db)
     {
         _db = db;
