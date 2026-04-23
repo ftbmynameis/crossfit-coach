@@ -1,33 +1,36 @@
 .exercise-list-container {
   padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+  height: calc(100vh - 64px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 
   h1 {
-    margin-bottom: 16px;
+    margin: 0 0 16px;
   }
 }
 
-.filter-field {
-  width: 100%;
-  max-width: 400px;
-  margin-bottom: 16px;
+.toolbar {
+  margin-bottom: 12px;
 }
 
-.table-wrapper {
-  overflow-x: auto;
-  border-radius: 4px;
+.quick-filter {
+  padding: 8px 12px;
   border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 4px;
+  font-size: 14px;
+  width: 300px;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
 
-  table {
-    width: 100%;
+  &:focus {
+    outline: none;
+    border-color: var(--mat-sys-primary);
   }
 }
 
-.no-data {
-  text-align: center;
-  padding: 24px;
-  color: var(--mat-sys-on-surface-variant);
+.exercise-grid {
+  flex: 1;
 }
 
 .error {

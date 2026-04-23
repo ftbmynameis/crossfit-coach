@@ -1,58 +1,80 @@
-import { Component, inject, OnInit, signal, computed, ViewChild } from '@angular/core';
-import { MatTableModule, MatTable } from '@angular/material/table';
-import { MatSortModule, MatSort } from '@angular/material/sort';
-import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { AgGridAngular } from 'ag-grid-angular';
+import {
+  ColDef,
+  GridReadyEvent,
+  GridApi,
+  themeQuartz,
+} from 'ag-grid-community';
 import { ExerciseService } from '../exercise.service';
 import { Exercise } from '../exercise.model';
 
 @Component({
   selector: 'app-exercise-list',
-  imports: [
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatCheckboxModule,
-  ],
+  imports: [AgGridAngular],
   templateUrl: './exercise-list.component.html',
   styleUrl: './exercise-list.component.scss',
 })
 export class ExerciseListComponent implements OnInit {
   private exerciseService = inject(ExerciseService);
 
-  displayedColumns = ['name', 'mechanic', 'equipment', 'isCrossFit'];
-  dataSource = new MatTableDataSource<Exercise>();
-  loading = signal(true);
+  exercises = signal<Exercise[]>([]);
   error = signal<string | null>(null);
 
-  @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  theme = themeQuartz;
+
+  columnDefs: ColDef<Exercise>[] = [
+    {
+      field: 'name',
+      headerName: 'Name',
+      flex: 2,
+      filter: 'agTextColumnFilter',
+      sort: 'asc',
+    },
+    {
+      field: 'mechanic',
+      headerName: 'Mechanic',
+      flex: 1,
+      filter: 'agTextColumnFilter',
+      valueFormatter: (p) => p.value ?? '—',
+    },
+    {
+      field: 'equipment',
+      headerName: 'Equipment',
+      flex: 1,
+      filter: 'agTextColumnFilter',
+      valueFormatter: (p) => p.value ?? '—',
+    },
+    {
+      field: 'isCrossFit',
+      headerName: 'CrossFit',
+      width: 110,
+      filter: 'agSetColumnFilter',
+      cellRenderer: (p: { value: boolean }) =>
+        p.value ? '✓' : '',
+    },
+  ];
+
+  defaultColDef: ColDef = {
+    sortable: true,
+    resizable: true,
+  };
+
+  private gridApi!: GridApi<Exercise>;
 
   ngOnInit(): void {
     this.exerciseService.getAll().subscribe({
-      next: (exercises) => {
-        this.dataSource.data = exercises;
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        this.loading.set(false);
-      },
-      error: () => {
-        this.error.set('Failed to load exercises.');
-        this.loading.set(false);
-      },
+      next: (data) => this.exercises.set(data),
+      error: () => this.error.set('Failed to load exercises.'),
     });
   }
 
-  applyFilter(event: Event): void {
+  onGridReady(params: GridReadyEvent<Exercise>): void {
+    this.gridApi = params.api;
+  }
+
+  onFilterInput(event: Event): void {
     const value = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = value.trim().toLowerCase();
-    this.dataSource.paginator?.firstPage();
+    this.gridApi.setGridOption('quickFilterText', value);
   }
 }
